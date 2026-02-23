@@ -1,0 +1,14 @@
+streamlit
+langchain
+langchain-community
+langchain-groq
+openai
+pymysql
+sqlalchemy
+python-dotenv
+chromadb
+sentence-transformers
+plotly
+pandas
+fpdf2
+groq
