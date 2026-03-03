@@ -95,38 +95,37 @@ flowchart TD
 
 ------------------------------------------------------------------------
 
-# 🧰 Technology Stack
+## 🧰 Technology Stack
 
-## 🤖 AI Layer
+### 🤖 AI Layer
 
-  Component       Technology
-  --------------- ----------------------
-  LLM             Llama 3.3 70B (Groq)
-  Embeddings      all-MiniLM-L6-v2
-  Orchestration   LangChain
-  SQL Parsing     sqlglot
+| Component | Technology |
+|------------|------------|
+| LLM | Llama 3.3 70B (Groq) |
+| Embeddings | all-MiniLM-L6-v2 |
+| Orchestration | LangChain |
+| SQL Parsing | sqlglot |
 
-------------------------------------------------------------------------
+---
 
-## 🗄 Data Layer
+### 🗄 Data Layer
 
-  Component      Technology
-  -------------- ------------
-  Database       MySQL
-  ORM            SQLAlchemy
-  Vector Store   ChromaDB
+| Component | Technology |
+|------------|------------|
+| Database | MySQL |
+| ORM | SQLAlchemy |
+| Vector Store | ChromaDB |
 
-------------------------------------------------------------------------
+---
 
-## 🖥 Backend
+### 🖥 Backend
 
-  Component       Technology
-  --------------- ---------------
-  Web UI          Streamlit
-  Visualization   Plotly
-  Config          python-dotenv
-  Processing      Pandas
-
+| Component | Technology |
+|------------|------------|
+| Web UI | Streamlit |
+| Visualization | Plotly |
+| Config Management | python-dotenv |
+| Data Processing | Pandas |
 ------------------------------------------------------------------------
 
 # 🔐 Security & Hardening
