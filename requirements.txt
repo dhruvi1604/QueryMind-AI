@@ -10,5 +10,9 @@ chromadb
 sentence-transformers
 plotly
 pandas
-fpdf2
+ fpdf2
 groq
+reportlab
+langchain-google-genai
+google-generativeai
+sqlglot

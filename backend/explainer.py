@@ -31,7 +31,7 @@ Your job:
 Keep it concise, professional, and avoid technical jargon.
 Format your response as:
 
-📊 **Insight:** [what the data shows]
+📊 *Insight: [what the data shows]
 💡 **Recommendation:** [what the business should do]
 """
 
@@ -101,8 +101,8 @@ Your job:
 - Give a business impact assessment if anomalies exist
 
 Format your response as:
-🔍 **Anomaly Check:** [what you found or "No anomalies detected"]
-⚠️ **Business Impact:** [why this matters or "Data looks healthy"]
+🔍 *Anomaly Check: [what you found or "No anomalies detected"]
+⚠️ *Business Impact: [why this matters or "Data looks healthy"]
 """
 
     response = client.chat.completions.create(

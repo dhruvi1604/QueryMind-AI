@@ -51,6 +51,18 @@ SQL: SELECT payment_method, COUNT(*) as total_orders FROM orders GROUP BY paymen
 Example 8:
 Question: Show me top rated products
 SQL: SELECT name, category, brand, rating, price FROM products WHERE rating >= 4.5 ORDER BY rating DESC
+
+Example 9:
+Question: Find second highest spending customer
+SQL: SELECT name, city, total_spent FROM (SELECT c.name, c.city, SUM(o.total_amount) as total_spent, DENSE_RANK() OVER (ORDER BY SUM(o.total_amount) DESC) as rnk FROM customers c JOIN orders o ON c.id = o.customer_id WHERE o.status = 'delivered' GROUP BY c.id, c.name, c.city) t WHERE rnk = 2
+
+Example 10:
+Question: Show me orders above average order value
+SQL: SELECT o.id, c.name, c.city, o.total_amount, o.order_date, o.payment_method FROM orders o JOIN customers c ON o.customer_id = c.id WHERE o.total_amount > (SELECT AVG(total_amount) FROM orders) ORDER BY o.total_amount DESC
+
+Example 11:
+Question: Running total revenue by month
+SQL: SELECT order_month, monthly_revenue, SUM(monthly_revenue) OVER (ORDER BY order_month) as running_total FROM (SELECT DATE_FORMAT(order_date, '%Y-%m') as order_month, SUM(total_amount) as monthly_revenue FROM orders WHERE status = 'delivered' GROUP BY order_month) t ORDER BY order_month
 """
 
 sql_prompt = ChatPromptTemplate.from_template("""
@@ -68,13 +80,18 @@ Past Successful Query Examples (from memory):
 Additional Examples:
 {examples}
 
-Rules:
-- Use ONLY the tables and columns that exist in the schema above
-- Do NOT use tables or columns that are not in the schema
-- Return ONLY the SQL query, nothing else
-- No explanations, no markdown, no backticks
-- Always use proper MySQL syntax
-- Always use proper JOINs when data from multiple tables is needed
+STRICT MySQL Rules:
+1. Use ONLY the tables and columns that exist in the schema above
+2. Return ONLY the SQL query, nothing else — no explanations, no markdown, no backticks
+3. Always use proper MySQL syntax
+4. Always use proper JOINs when data from multiple tables is needed
+5. NEVER use 'rank' as a column alias — it is a reserved keyword in MySQL. Use 'rnk' or 'ranking' instead
+6. NEVER use 'row_number', 'dense_rank', 'percent_rank' as column aliases — use 'row_num', 'rnk', 'pct_rnk'
+7. When using window functions in subqueries, always wrap in an outer SELECT and reference the safe alias
+8. NEVER use reserved words as aliases: rank, row, key, value, name, index, select, from, where, order, group
+9. For ranking patterns always follow this structure:
+   SELECT cols FROM (SELECT cols, DENSE_RANK() OVER (...) as rnk FROM ...) t WHERE rnk = N
+10. Always test mentally that column aliases in subqueries are not MySQL reserved words before writing
 
 Question: {question}
 

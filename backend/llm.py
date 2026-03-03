@@ -6,7 +6,7 @@ from langchain_groq import ChatGroq
 from langchain_core.output_parsers import StrOutputParser
 from config.settings import GROQ_API_KEY
 from prompts.sql_prompt import sql_prompt, get_prompt_inputs
-from backend.validator import clean_sql, is_safe_query
+from backend.validator import clean_sql, is_safe_query, enforce_limit
 from backend.database import get_schema
 from backend.rag import save_pending_query, get_similar_queries
 
@@ -39,12 +39,10 @@ def generate_sql(question: str, context: str = "") -> tuple[str, bool, str]:
 
         raw_sql = sql_chain.invoke(inputs)
         cleaned_sql = clean_sql(raw_sql)
-        is_safe, reason = is_safe_query(cleaned_sql)
-
-        # inside generate_sql function, change this line:
+        limited_sql = enforce_limit(cleaned_sql)
+        is_safe, reason = is_safe_query(limited_sql)
         if is_safe:
-            save_pending_query(question, cleaned_sql)
-        return cleaned_sql, is_safe, reason
-
+            save_pending_query(question, limited_sql)
+            return limited_sql, is_safe, reason
     except Exception as e:
         return "", False, f"❌ LLM Error: {str(e)}"
