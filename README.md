@@ -100,7 +100,7 @@ flowchart TD
 ### 🤖 AI Layer
 
 | Component | Technology |
-|------------|------------|
+|-----------|------------|
 | LLM | Llama 3.3 70B (Groq) |
 | Embeddings | all-MiniLM-L6-v2 |
 | Orchestration | LangChain |
@@ -111,7 +111,7 @@ flowchart TD
 ### 🗄 Data Layer
 
 | Component | Technology |
-|------------|------------|
+|-----------|------------|
 | Database | MySQL |
 | ORM | SQLAlchemy |
 | Vector Store | ChromaDB |
@@ -121,10 +121,10 @@ flowchart TD
 ### 🖥 Backend
 
 | Component | Technology |
-|------------|------------|
+|-----------|------------|
 | Web UI | Streamlit |
 | Visualization | Plotly |
-| Config Management | python-dotenv |
+| Config | python-dotenv |
 | Data Processing | Pandas |
 ------------------------------------------------------------------------
 
