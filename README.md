@@ -12,10 +12,10 @@ insights, anomaly detection, and executive reporting.
 QueryMind AI converts **natural language into secure SQL queries** and
 delivers:
 
--   📊 Real-time database analytics\
--   🧠 AI-generated business insights\
--   ⚠️ Anomaly detection\
--   📄 Executive-ready PDF reports\
+-   📊 Real-time database analytics
+-   🧠 AI-generated business insights
+-   ⚠️ Anomaly detection
+-   📄 Executive-ready PDF reports
 -   🔁 Self-improving RAG memory
 
 Built with production-grade safety guardrails and modular AI
@@ -130,11 +130,11 @@ flowchart TD
 
 # 🔐 Security & Hardening
 
--   AST-level SQL parsing\
--   DDL/DML blocking\
--   Auto LIMIT injection\
--   Query timeout protection\
--   Read-only DB credentials\
+-   AST-level SQL parsing
+-   DDL/DML blocking
+-   Auto LIMIT injection
+-   Query timeout protection
+-   Read-only DB credentials
 -   Memory approval gating
 
 Designed to prevent SQL injection, runaway queries, and hallucinated
@@ -195,20 +195,20 @@ streamlit run app.py
 
 # 📈 Engineering Highlights
 
--   Multi-layer prompt injection\
--   Human-in-the-loop query learning\
--   Production-safe SQL execution\
--   Intelligent visualization logic\
+-   Multi-layer prompt injection
+-   Human-in-the-loop query learning
+-   Production-safe SQL execution
+-   Intelligent visualization logic
 -   Modular backend architecture
 
 ------------------------------------------------------------------------
 
 # 🔮 Future Enhancements
 
--   Query cost estimation via EXPLAIN\
--   Role-based access control\
--   Redis caching\
--   Docker deployment\
+-   Query cost estimation via EXPLAIN
+-   Role-based access control
+-   Redis caching
+-   Docker deployment
 -   REST API version
 
 ------------------------------------------------------------------------
